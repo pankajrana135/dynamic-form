@@ -14,6 +14,7 @@ import { DatePickerComponent} from './controls/datepicker.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { TimeComponent} from './controls/time.component';
+import { EntityComponent } from './controls/entity.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { TimeComponent} from './controls/time.component';
     FileComponent,
     RadioComponent,
     DatePickerComponent,
-    TimeComponent
+    TimeComponent,
+    EntityComponent
   ],
   exports: [DynamicFormBuilderComponent],
   providers: []

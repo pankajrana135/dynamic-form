@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators ,FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'dynamic-form-builder',
@@ -28,13 +28,17 @@ export class DynamicFormBuilderComponent implements OnInit {
   mytime: Date = new Date();
   meridians = ['12H', '24H'];
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     let fieldsCtrls = {};
     for (let f of this.fields) {
-      if (f.type != 'checkbox') {
-        fieldsCtrls[f.name] = new FormControl(f.value || '', f.validators)
+
+      if(f.rmxtype=='entity'){
+        fieldsCtrls[f.name] =this.formBuilder.array([])
+      }
+      else if (f.type != 'checkbox') {
+        fieldsCtrls[f.name] = new FormControl(f.value || '',  f.validators)
       } else {
         let opts = {};
         for (let opt of f.options) {
@@ -43,7 +47,12 @@ export class DynamicFormBuilderComponent implements OnInit {
         fieldsCtrls[f.name] = new FormGroup(opts)
       }
     }
-    this.form = new FormGroup(fieldsCtrls);
+
+   // this.form = new FormGroup(fieldsCtrls);
+
+    this.form=this.formBuilder.group(
+      fieldsCtrls
+    );
   }
 
   handleclick() {

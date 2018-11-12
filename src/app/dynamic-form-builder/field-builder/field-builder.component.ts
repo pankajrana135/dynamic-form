@@ -8,10 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
       {{field.label}}
       <strong class="text-danger" *ngIf="field.required">*</strong>
     </label>
-    <div class="col-md-9" [ngSwitch]="field.type">
+    <div class="col-md-9" [ngSwitch]="field.rmxtype">
       <textbox *ngSwitchCase="'text'" [field]="field" [form]="form"></textbox>
       <datepicker *ngSwitchCase="'date'" [field]="field" [form]="form"></datepicker>
-     
+     <entity *ngSwitchCase="'entity'" [field]="field" [form]="form"></entity>
       <dropdown *ngSwitchCase="'dropdown'" [field]="field" [form]="form"></dropdown>
       <checkbox *ngSwitchCase="'checkbox'" [field]="field" [form]="form"></checkbox>
       <radio *ngSwitchCase="'radio'" [field]="field" [form]="form"></radio>

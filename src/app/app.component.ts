@@ -14,6 +14,7 @@ export class AppComponent {
   public fields: any[] = [
     {
       type: 'text',
+      rmxtype: 'text',
       name: 'firstName',
       label: 'First Name',
       value: '',
@@ -27,6 +28,7 @@ export class AppComponent {
     },
     {
       type: 'text',
+      rmxtype: 'text',
       name: 'lastName',
       label: 'Last Name',
       value: '',
@@ -40,19 +42,21 @@ export class AppComponent {
     },
     {
       type: 'text',
+      rmxtype: 'text',
       name: 'email',
       label: 'Email',
       value: '',
       required: true,
       validators: [
         Validators.required,
-        Validators.maxLength(10)
+        Validators.email
       ],
       placeholder: '',
       dataModalObject: 'Event.Email'
     },
     {
       type: 'date',
+      rmxtype: 'date',
       name: 'dateOfBirth',
       label: 'Date of Birth',
       value: '',
@@ -67,6 +71,7 @@ export class AppComponent {
     
     {
       type: 'text',
+      rmxtype: 'text',
       name: 'description',
       label: 'Description',
       value: '',
@@ -82,6 +87,7 @@ export class AppComponent {
    
     {
       type: 'dropdown',
+      rmxtype: 'dropdown',
       name: 'country',
       label: 'Country',
       value: 'in',
@@ -95,6 +101,16 @@ export class AppComponent {
         { key: 'us', label: 'USA' }
       ],
       dataModalObject: ''
+    },
+    {
+      type: 'text',
+      rmxtype: 'entity',
+      name: 'employees',
+      label: 'Employee',
+      value: '',
+      required: false,
+     
+      dataModalObject: 'PiEmployee.PiEid'
     },
     // {
     //  type: 'file',
